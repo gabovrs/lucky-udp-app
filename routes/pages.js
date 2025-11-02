@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   // res.redirect('/profile')
   return res.render('pages/home', {
     title: 'Inicio',
+    year: new Date().getFullYear()
   })
 })
 
