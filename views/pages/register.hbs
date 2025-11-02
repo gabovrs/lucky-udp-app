@@ -1,0 +1,36 @@
+<section class="profile">
+  <h1>Crear cuenta</h1>
+  <form action="/register" method="post">
+    <div class="form-grid">
+      <div>
+        <label class="label" for="username">Nombre de usuario</label>
+        <input class="input" id="username" name="username" required value="{{prefill.username}}"
+          autocomplete="username" />
+      </div>
+      <div>
+        <label class="label" for="password">Contraseña</label>
+        <input class="input" id="password" name="password" type="password" minlength="8" required
+          autocomplete="new-password" />
+      </div>
+      <div>
+        <label class="label" for="password2">Confirmar contraseña</label>
+        <input class="input" id="password2" name="password2" type="password" minlength="8" required
+          autocomplete="new-password" />
+      </div>
+    </div>
+
+    {{#if error}}
+    <p class="form-error">{{error}}</p>
+    {{/if}}
+
+    <label style="display:flex;align-items:center;gap:.6rem;margin-top:10px">
+      <input type="checkbox" required />
+      <span>Acepto términos y condiciones</span>
+    </label>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Crear cuenta</button>
+      <a class="btn btn-secondary" href="/login">Ya tengo cuenta</a>
+    </div>
+  </form>
+</section>

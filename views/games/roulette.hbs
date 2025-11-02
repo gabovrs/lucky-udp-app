@@ -1,0 +1,54 @@
+<section class="game">
+  <section class="profile">
+    <header class="profile-wrap">
+      <h1>Ruleta Europea</h1>
+      <span class="btn btn-secondary" aria-disabled="true" style="cursor:default">Saldo: <strong
+          id="balanceValue">{{balance}}</strong></span>
+    </header>
+    <form id="bet-form">
+      <div class="form-grid">
+        <div>
+          <label class="label" for="amount">Monto</label>
+          <input class="input" name="amount" id="amount" type="number" min="1" required />
+        </div>
+
+        <div>
+          <label class="label" for="betType">Tipo de apuesta</label>
+          <select class="input" name="betType" id="betType">
+            <option value="straight">Número (35:1)</option>
+            <option value="color">Color (1:1)</option>
+            <option value="parity">Par/Impar (1:1)</option>
+            <option value="dozen">Docena (2:1)</option>
+          </select>
+        </div>
+
+        <div id="selection-wrap">
+          <!-- Este input cambia dinámicamente según tipo -->
+          <label class="label" for="selection">Número 0-36</label>
+          <input class="input" name="selection" id="selection" type="number" min="0" max="36" required />
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Apostar</button>
+        </div>
+      </div>
+    </form>
+    <section class="feature card">
+      <h3>Resultado del giro:</h3>
+      <p>Número ganador: <span id="winnerNumberValue">N/A</span></p>
+      <p>Color ganador: <span id="winnerColorValue">N/A</span></p>
+      <div id="result-status"></div>
+    </section>
+  </section>
+  <section class="game-wrap">
+    <div class="roulette-wrap" id="roulette">
+      <div class="pointer" aria-hidden="true"></div>
+
+      <div id="wheel" class="wheel" aria-label="Rueda de ruleta europea">
+        <div class="ticks" aria-hidden="true"></div>
+        <div id="wheel-labels" class="wheel-labels" aria-hidden="true"></div>
+        <div class="hub" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+</section>

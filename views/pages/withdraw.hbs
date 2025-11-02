@@ -1,0 +1,38 @@
+<section class="profile">
+  <header class="profile-wrap">
+    <div>
+      <h1>Retirar</h1>
+    </div>
+    <span class="btn btn-secondary" aria-disabled="true" style="cursor:default">Saldo: <strong>{{balance}}</strong></span>
+  </header>
+  <form action="/withdraw" method="post">
+    <div class="form-grid">
+      <div>
+        <label class="label" for="amount">Cantidad</label>
+        <input class="input" type="number" id="amount" name="amount" required />
+      </div>
+      <div>
+        <label class="label" for="withdrawMethod">Método de retiro</label>
+        <select class="input" id="withdrawMethod" name="withdrawMethod" required>
+          <option value="bankTransfer" selected>Transferencia bancaria</option>
+          <option value="paypal">PayPal</option>
+          <option value="crypto">Criptomoneda</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="label" for="accountDetails">Detalles de la cuenta</label>
+        <input class="input" type="text" id="accountDetails" name="accountDetails" required />
+      </div>
+    </div>
+
+    {{#if error}}
+    <p class="form-error">{{error}}</p>
+    {{/if}}
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Retirar</button>
+      <a class="btn btn-secondary" href="/profile">Cancelar</a>
+    </div>
+  </form>
+</section>

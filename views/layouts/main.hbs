@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{#if title}}{{title}} - {{/if}}Casino</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  {{> nav}}
+  <main class="container">
+    {{{body}}}
+  </main>
+  <footer>
+    <div class="container">
+      <p>© {{year}} Lucky UDP. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script src="/js/client.js"></script>
+</body>
+
+</html>

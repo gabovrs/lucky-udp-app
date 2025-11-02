@@ -1,0 +1,19 @@
+<header class="navbar">
+  <div class="container nav-wrap">
+    <a class="brand" href="/">
+      <img src="/images/logo.png" width="80">
+    </a>
+    <nav aria-label="principal">
+      <a class="btn btn-link" href="/info">Información</a>
+      {{#if isLoggedIn}}
+        <a class="btn btn-link" href="/profile">Perfil</a>
+        <form action="/logout" method="post" style="display:inline">
+          <button class="btn btn-link" type="submit">Cerrar sesión</button>
+        </form>
+      {{else}}
+        <a class="btn btn-link" href="/login">Acceder</a>
+        <a class="btn btn-primary" href="/register">Crear cuenta</a>
+      {{/if}}
+    </nav>
+  </div>
+</header>

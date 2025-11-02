@@ -1,0 +1,60 @@
+<section class="profile">
+  <header class="profile-wrap">
+    <div>
+      <h1>Perfil</h1>
+      <p>Bienvenido, <strong>{{userName}}</strong></p>
+    </div>
+    <div class="hero-buttons">
+      <span class="btn btn-secondary" aria-disabled="true" style="cursor:default">Saldo:
+        <strong>{{balance}}</strong></span>
+      <a class="btn btn-secondary" href="/withdraw">Retirar</a>
+      <a class="btn btn-primary" href="/deposit">Depositar</a>
+    </div>
+  </header>
+
+  <div class="profile-grid">
+    <section class="feature card">
+      <h2>Transacciones recientes</h2>
+      {{#if hasTransactions}}
+      <div style="max-height: 25rem; overflow-y:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each transactions}}
+            <tr>
+              <td>{{formatDate this.createdAt}}</td>
+              <td>{{this.type}}</td>
+              {{#ifGreaterThan this.amount 0}}
+              <td style="color:var(--gold); font-weight: 600">{{formatMoney this.amount}}</td>
+              {{else}}
+              <td style="color:var(--error); font-weight: 600">{{formatMoney this.amount}}</td>
+              {{/ifGreaterThan}}
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{else}}
+      <p>Aún no registras movimientos.</p>
+      {{/if}}
+    </section>
+
+
+    <article class="feature card">
+      <h2>Juegos disponibles</h2>
+      <div class="card game-card">
+        <div>
+          <strong>Ruleta Europea</strong>
+          <p>La ruleta europea es un popular juego de casino que se distingue por tener una sola casilla con el número cero (0), lo que ofrece mejores probabilidades a los jugadores.</p>
+        </div>
+        <a class="btn btn-secondary" href="/games/roulette">Jugar</a>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class="profile">
+  <header class="profile-wrap">
+    <div>
+      <h1>Depositar</h1>
+    </div>
+    <span class="btn btn-secondary" aria-disabled="true" style="cursor:default">Saldo: <strong>{{balance}}</strong></span>
+  </header>
+  <form action="/deposit" method="post">
+    <div class="form-grid">
+      <div>
+        <label class="label" for="amount">Cantidad</label>
+        <input class="input" type="number" id="amount" name="amount" required />
+      </div>
+      <div>
+        <label class="label" for="paymentMethod">Método de pago</label>
+        <select class="input" id="paymentMethod" name="paymentMethod" required>
+          <option value="bankTransfer" selected>Transferencia bancaria</option>
+          <option value="creditCard">Tarjeta de crédito</option>
+          <option value="debitCard">Tarjeta de débito</option>
+        </select>
+      </div>
+    </div>
+
+    {{#if error}}
+    <p class="form-error">{{error}}</p>
+    {{/if}}
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Depositar</button>
+      <a class="btn btn-secondary" href="/profile">Cancelar</a>
+    </div>
+  </form>
+</section>
