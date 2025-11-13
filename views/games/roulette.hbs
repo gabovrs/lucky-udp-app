@@ -53,14 +53,10 @@
   </section>
   <section class="feature card">
     <h3>Últimos números ganadores</h3>
-    {{#if hasWinners}}
-        <div id="winners" class="winners-list">
+    <div id="winners" class="winners-list">
       {{#each winners}}
       <span class="winner-chip {{this.color}}" title="{{this.color}}">{{this.number}}</span>
       {{/each}}
     </div>
-    {{else}}
-    <p>No hay números ganadores registrados aún.</p>
-    {{/if}}
   </section>
 </section>
