@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const winnerColorValue = $('#winnerColorValue');
   const balanceValue = $('#balanceValue');
   const resultStatus = $('#result-status');
+  const winnersBox = document.querySelector('#winners');
 
   if (betForm) {
     betForm.addEventListener('submit', async (e) => {
@@ -36,8 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
       isPlaying = true;
       const formData = new FormData(betForm);
       const data = Object.fromEntries(formData);
-
-      console.log('Datos de la apuesta:', data);
 
       winnerNumberValue.textContent = 'N/A';
       winnerColorValue.textContent = 'N/A';
@@ -70,6 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
         resultStatus.innerHTML = `<p class="won">¡Ganaste ${result.payout}!</p>`;
       } else {
         resultStatus.innerHTML = `<p class="lost">Perdiste.</p>`;
+      }
+
+      if (winnersBox && typeof result.number === 'number' && result.color) {
+        const chip = document.createElement('span');
+        chip.className = `winner-chip ${result.color}`;
+        chip.textContent = String(result.number);
+        chip.title = result.color;
+        winnersBox.insertBefore(chip, winnersBox.firstChild);
+        while (winnersBox.children.length > 12) {
+          winnersBox.removeChild(winnersBox.lastElementChild);
+        }
       }
       isPlaying = false;
     });

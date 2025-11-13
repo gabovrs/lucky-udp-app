@@ -2,11 +2,15 @@ const router = require('express').Router()
 const { settle } = require('../games/roulette')
 const { loadUser } = require('./auth')
 const Transaction = require('../models/Transaction')
+const RouletteWinner = require('../models/RouletteWinner')
 
-router.get('/roulette', loadUser, (req, res) => {
+router.get('/roulette', loadUser, async (req, res) => {
+  const winners = await RouletteWinner.find().sort({ createdAt: -1 }).limit(12).lean();
   res.render('games/roulette', {
     title: 'Ruleta Europea',
     balance: '$' + req.user.balance.toLocaleString(),
+    winners,
+    hasWinners: winners.length > 0,
   })
 })
 
@@ -44,6 +48,7 @@ router.post('/roulette', loadUser, async (req, res) => {
   }
   await user.save();
   await transaction.save();
+  await RouletteWinner.create({ number: result.number, color: result.color });
 
   res.json({
     number: result.number,

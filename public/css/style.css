@@ -350,9 +350,9 @@ li {
 }
 
 .game {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .game-wrap {
@@ -505,4 +505,37 @@ th {
   .wheel {
     transition-duration: .01s;
   }
+}
+
+.winners-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.winner-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .15);
+}
+
+.winner-chip.green {
+  background: var(--accent);
+  color: #e8ffea;
+}
+
+.winner-chip.red {
+  background: var(--error);
+}
+
+.winner-chip.black {
+  background: #000;
 }
